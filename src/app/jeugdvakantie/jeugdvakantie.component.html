@@ -1,1 +1,9 @@
 <p>jeugdvakantie works!</p>
+
+<ng-container *ngIf="hobbies$ | async as hobbies">
+
+  <ul>
+    <li *ngFor="let hobby of hobbies"> {{hobby}} </li>
+  </ul>
+
+</ng-container>

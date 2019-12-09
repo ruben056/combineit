@@ -1,1 +1,9 @@
 <p>werkloosheid works!</p>
+
+<ng-container *ngIf="todos$ | async as todos">
+
+  <ul>
+    <li *ngFor="let todo of todos"> {{todo}} </li>
+  </ul>
+
+</ng-container>

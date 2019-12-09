@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getHobbies } from '../reducers/jeugdvakantie/jeugdvakantie.reducer';
 
 @Component({
   selector: 'app-jeugdvakantie',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JeugdvakantieComponent implements OnInit {
 
-  constructor() { }
+  hobbies$: Observable<string[]>
+
+  constructor(private store: Store<{}>) { }
 
   ngOnInit() {
+    this.hobbies$ = this.store.pipe(select(getHobbies));
   }
 
 }

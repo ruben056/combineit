@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getTodos } from '../reducers/werkloosheid/werkloosheid.reducer';
 
 @Component({
   selector: 'app-werkloosheid',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WerkloosheidComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store:Store<{}>) { }
+
+  todos$: Observable<string[]>;
 
   ngOnInit() {
+    this.todos$ = this.store.pipe(select(getTodos));
   }
 
 }
